@@ -1,0 +1,274 @@
+.hero-title > h1 {
+
+    color: #fff;
+    font-size: 70px;
+    font-weight: 900;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto";
+    margin-top: "-10px"
+}
+
+.anatomy-title > h1 {
+
+  color: #fff;
+  font-size: 70px;
+  font-weight: 900;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px"
+}
+
+.anatomy-title > p {
+
+  color: #fff;
+  font-size: 25px;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px"
+}
+
+.proposition-title > h1 {
+
+  color: #fff;
+  font-size: 75px;
+  font-weight: 900;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px";
+  letter-spacing: -5px;
+  
+}
+
+.proposition-title > p {
+
+  color: #fff;
+  font-size: 25px;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px"
+}
+
+/* Polygon Explained Title */
+
+.polygon-title > h1 {
+
+  color: #fff;
+  font-size: 75px;
+  font-weight: 900;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px";
+  letter-spacing: -5px;
+  
+}
+
+.polygon-title > p {
+
+  color: #fff;
+  font-size: 25px;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px"
+}
+
+/* Polygon Explained Title */
+
+.buyeth-title > h1 {
+
+  color: #fff;
+  /* background-color: #000; */
+  font-size: 50px;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px";
+  letter-spacing: -3px;
+  
+}
+
+.buyeth-title > p {
+
+  color: #fff;
+  /* background-color: #000; */
+  font-size: 25px;
+  align-items: left;
+  text-align: left;
+  font-family: "Roboto Mono";
+  margin-top: "-10px"
+}
+
+
+
+.project-title > h1 {
+
+  color: #fff;
+  font-size: 70px;
+  font-weight: 900;
+  align-items: center;
+  text-align: center;
+  font-family: "Roboto";
+  margin-top: "-10px"
+}
+
+.how-to-title > h1 {
+
+    color: #fff;
+    font-size: 70px;
+    font-weight: 900;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto Mono";
+    margin-top: "-10px";
+    letter-spacing: -5px;
+}
+
+@media screen and (max-width: 960px) {
+    .hero-title > h1 {
+      font-size: 45px;
+      font-weight: 900;
+      margin-top: 10px;
+      line-height: 130%;
+      color: #fff;
+    }
+
+    .anatomy-title > h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .anatomy-title > p {
+
+      color: #fff;
+      font-size: 20px;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .polygon-title > h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .polygon-title > p {
+
+      color: #fff;
+      font-size: 20px;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .buyeth-title > h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .buyeth-title > p {
+
+      color: #fff;
+      font-size: 20px;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .proposition-title > h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px";
+      letter-spacing: -2px;
+    }
+
+    .proposition-title > p {
+
+      color: #fff;
+      font-size: 20px;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+
+    .project-title h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto";
+      margin-top: "140px"
+    }
+  }
+
+
+
+@media screen and (max-width: 960px) {
+    .how-to-title > h1 {
+      font-size: 45px;
+      font-weight: 900;
+      margin-top: -40px;
+      line-height: 130%;
+      padding: 5px;
+      font-family: "Roboto Mono";
+      letter-spacing: -2px;
+    }
+
+    .anatomy-title > h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "-10px"
+    }
+
+    .project-title h1 {
+
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      align-items: center;
+      text-align: center;
+      font-family: "Roboto Mono";
+      margin-top: "140px"
+    }
+  }
+  

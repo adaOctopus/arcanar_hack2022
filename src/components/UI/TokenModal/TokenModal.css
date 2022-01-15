@@ -1,0 +1,40 @@
+.my-modal .modal-content {
+  
+  background-image: url("../../../assets/img/stars.png");
+    border: 0 solid;
+    border-color: #fff;
+    
+  }
+
+  .my-modal .modal-header{
+
+    border-bottom: 0 none;
+
+  }
+
+  .my-modal .modal-footer{
+
+    border-top: 0 none;
+
+  }
+
+  .my-modal .modal-body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .my-modal .modal-body > h4 {
+
+    font-family: "Roboto Mono";
+
+  }
+
+  .my-modal .modal-title {
+
+    font-family: "Roboto Mono";
+    color: "#fff";
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }

@@ -1,0 +1,153 @@
+.grad {background-image: linear-gradient(to right, #FDFC47 0%, #24FE41  51%, #FDFC47  100%)}
+.grad {
+   display: flex;
+   border: none;
+   align-items: center;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   /* box-shadow: 0 0 20px #eee; */
+   border-radius: 10px;
+   display: block;
+ }
+
+ .grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+ /* WALLET ACTION BUTTON *//* WALLET ACTION BUTTON *//* WALLET ACTION BUTTON */
+ /* WALLET ACTION BUTTON *//* WALLET ACTION BUTTON *//* WALLET ACTION BUTTON */
+
+ 
+.wallet {background-image: linear-gradient(to right, #0cebeb 0%, #20e3b2  51%, #0cebeb  100%)}
+.wallet {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 10px #81FED0;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .wallet:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+ .howallet {background-image: linear-gradient(to right, #f857a6 0%, #ff5858  51%, #f857a6  100%)}
+.howallet {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 5px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .howallet:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+
+ /* GENERATE TOKEN BUTTON */
+
+ .gentoken {background-image: #fff}
+ .gentoken {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #000;            
+    border-radius: 10px;
+    display: block;
+  }
+
+  .gentoken:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #fff;
+  }
+
+
+  .polygon {background-image: linear-gradient(to right, #fc00ff 0%, #00dbde  51%, #fc00ff  100%)}
+  .polygon {
+     margin: 10px;
+     padding: 15px 45px;
+     text-align: center;
+     text-transform: uppercase;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white;            
+     border-radius: 10px;
+     display: block;
+   }
+
+   .polygon:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
+  
+ 
+
+ /* RESPONSIVE DESIGN */
+
+ @media screen and (max-width: 960px) {
+
+  .wallet {
+    display: block;
+    align-items: center;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 10px #81FED0;
+    border-radius: 10px;
+    display: block;
+  }
+ }
+
+ @media screen and (max-width: 768px) {
+   .wallet {
+    display: block;
+    align-items: center;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 10px #81FED0;
+    border-radius: 10px;
+    display: block;
+  }
+ }

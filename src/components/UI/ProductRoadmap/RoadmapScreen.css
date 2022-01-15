@@ -1,0 +1,59 @@
+.roadmap-container {
+    background-color: #000;
+}
+
+
+
+.roadmap-card {
+    background-color: #000;
+    margin-top: 60px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: #9E9E9E;
+}
+
+.roadmap-header {
+
+    font-family: "Roboto Mono";
+    font-size: 20px;
+    color: #fff;
+    font-weight: normal;
+}
+
+.roadmap-title {
+
+    font-family: "Roboto Mono";
+    font-size: 17px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.roadmap-text {
+
+    font-family: "Roboto Mono";
+    font-size: 15px;
+    color: #fff;
+    font-weight: lighter;
+}
+
+
+.roadmap-title > h1 {
+
+    color: #fff;
+    font-size: 70px;
+    font-weight: 900;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto Mono";
+    margin-top: "-10px"
+  }
+  
+  .roadmap-title > p {
+  
+    color: #fff;
+    font-size: 25px;
+    align-items: center;
+    text-align: center;
+    font-family: "Roboto Mono";
+    margin-top: "-10px"
+  }

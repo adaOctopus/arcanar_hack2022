@@ -1,0 +1,42 @@
+.polygon-modal .modal-content {
+  
+     
+      border: 0 solid;
+      border-color: #fff;
+      height: 80vh;
+      border-radius: 5%;
+      
+    }
+  
+    .polygon-modal .modal-header{
+  
+      border-bottom: 0 none;
+  
+    }
+  
+    .polygon-modal .modal-footer{
+  
+      border-top: 0 none;
+  
+    }
+  
+    .polygon-modal .modal-body {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+  
+    .polygon-modal .modal-body > h4 {
+  
+      font-family: "Roboto Mono";
+  
+    }
+  
+    .polygon-modal .modal-title {
+  
+      font-family: "Roboto Mono";
+      color: "#fff";
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
