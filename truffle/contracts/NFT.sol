@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.7;
-import '@openzeppelin/contracts/token/ERC1155/ERC1155.sol';
-import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/utils/Counters.sol';
+import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@opengsn/contracts/src/BaseRelayRecipient.sol";
-import './EIP712MetaTransaction.sol';
+import "@openzeppelin/contracts/metatx/ERC2771Context.sol";
 
-contract NFT is ERC1155, BaseRelayRecipient{
+contract NFT is ERC1155, ERC2771Context {
     
     using Counters for Counters.Counter;
     Counters.Counter private _tokenId;
@@ -15,17 +14,6 @@ contract NFT is ERC1155, BaseRelayRecipient{
 
      // Contract name
     string public name;
-    address constant public biconomyTruster = 0x84a0856b038eaAd1cC7E297cF34A7e72685A8693;
-
-function _msgSender() internal view override(Context, BaseRelayRecipient)
-      returns (address sender) {
-      sender = BaseRelayRecipient._msgSender();
-  }
-
-  function _msgData() internal view override(Context, BaseRelayRecipient)
-      returns (bytes memory) {
-      return BaseRelayRecipient._msgData();
-  }
     
     //defining
     event MintToken(address _address, uint256 _tokenId);
@@ -38,15 +26,18 @@ function _msgSender() internal view override(Context, BaseRelayRecipient)
     mapping( uint256 => Stock) StockCollection;
     
     //constructor
-     constructor() public ERC1155('') {
+     constructor(address trustedForwarder) ERC1155('') ERC2771Context(trustedForwarder){
         owner = payable(msg.sender);
-        _setTrustedForwarder(biconomyTruster);
     }
 
-    
+    function _msgSender() internal override(Context, ERC2771Context)
+      view returns (address) {
+       return ERC2771Context._msgSender();
+    }
 
-    function versionRecipient() external view override returns (string memory) {
-        return "1";
+     function _msgData() internal override(Context, ERC2771Context)
+      view returns (bytes memory) {
+       return ERC2771Context._msgData();
     }
 
     
@@ -73,3 +64,4 @@ function _msgSender() internal view override(Context, BaseRelayRecipient)
 
         }
 }
+

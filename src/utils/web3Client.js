@@ -33,11 +33,46 @@ const ipfsClient = create({
 });
 ////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////
+// Biconomy DApp tutorial - Defining data structures for message sign
+let domainData = {
+  name: "Arcanar DApp",
+  version: "1",
+  chainId : "80001", // Kovan
+  verifyingContract: "0x02518A06dcd610aD68728E8eAd22dC26B97e1D33"
+};
+const metaTransactionType = [
+  { name: "nonce", type: "uint256" },
+  { name: "from", type: "address" }
+];
+const domainType = [
+  { name: "name", type: "string" },
+  { name: "version", type: "string" },
+  { name: "chainId", type: "uint256" },
+  { name: "verifyingContract", type: "address" }
+];
+
+let message = {};
+message.nonce = "1";
+message.from = selectedAccount;
+
+const dataToSign = JSON.stringify({
+    types: {
+        EIP712Domain: domainType,
+        MetaTransaction: metaTransactionType
+      },
+      domain: domainData,
+      primaryType: "MetaTransaction",
+      message: message
+    });
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
 
 // Enabling Biconomy Relayers for Meta Transactions ////////////////////////
-let infura_provider = new Web3.providers.HttpProvider('https://polygon-mumbai.infura.io/v3/bed32ebaaacb44959342fc2eacbdb3d7');
-const biconomy = new Biconomy(infura_provider,{apiKey: 't_gkqtgTd.a93b199c-77be-46d3-bf5a-6b385b032552', debug: true});
-const biconomyWeb3 = new Web3(biconomy);
+// let infura_provider = new Web3.providers.HttpProvider('https://polygon-mumbai.infura.io/v3/bed32ebaaacb44959342fc2eacbdb3d7');
+// const biconomy = new Biconomy(infura_provider,{apiKey: 't_gkqtgTd.a93b199c-77be-46d3-bf5a-6b385b032552', debug: true});
+// const biconomyWeb3 = new Web3(biconomy);
 ////////////////////////////////////////////////////////////////////////////
 
 // Main function to check if Metamask installed and access the wallet address
@@ -45,9 +80,17 @@ export const init = async () => {
   let provider = window.ethereum;
   // the [provider] here is what has isMetamask, chainId, network version, selectedAddress etc etc
   if (typeof provider !== "undefined") {
-    //Metamask is installed
-    //next step is to ask the user to connect their wallet
-    provider
+
+    // Start Biconomy Initialization
+    await provider.enable();
+    const biconomy = new Biconomy(provider,{apiKey: 't_gkqtgTd.a93b199c-77be-46d3-bf5a-6b385b032552', debug: true});
+    const biconomyWeb3 = new Web3(biconomy);
+    biconomy.onEvent(biconomy.READY, () => {
+      arcanarContract = new biconomyWeb3.eth.Contract(
+        NFT.abi,
+        NFT.networks[networkId].address
+      );
+      provider
       .request({
         method: "eth_requestAccounts",
       })
@@ -59,28 +102,22 @@ export const init = async () => {
         console.log(err);
         return;
       });
-
-    window.ethereum.on("accountsChanged", function (accounts) {
-      selectedAccount = accounts[0];
-      console.log(`Selected account changed to ${selectedAccount}`);
-    });
-
-    const web3 = new Web3(provider);
-    const networkId = await web3.eth.net.getId();
-    nftContract = new web3.eth.Contract(
-      NFT.abi,
-      NFT.networks[networkId].address
-    );
-    console.log(nftContract);
-
-    biconomy.onEvent(biconomy.READY, () => {
-      arcanarContract = new biconomyWeb3.eth.Contract(
-        NFT.abi,
-        NFT.networks[networkId].address
-      );
     }).onEvent(biconomy.ERROR, (error, message) => {
-      // Handle error while initializing mexa
+      console.log(error)
     });
+
+    // window.ethereum.on("accountsChanged", function (accounts) {
+    //   selectedAccount = accounts[0];
+    //   console.log(`Selected account changed to ${selectedAccount}`);
+    // });
+
+    // const web3 = new Web3(provider);
+    // const networkId = await web3.eth.net.getId();
+    // nftContract = new web3.eth.Contract(
+    //   NFT.abi,
+    //   NFT.networks[networkId].address
+    // );
+    // console.log(nftContract);
 
     isInitialised = true;
   } else {
@@ -89,32 +126,37 @@ export const init = async () => {
 };
 ////////////////////////////////////////////////////////////////////
 
-
-
-
-// Enabling Biconomy Relayers for Meta Transactions ////////////////////////
-let infura_provider = new Web3.providers.HttpProvider('https://polygon-mumbai.infura.io/v3/bed32ebaaacb44959342fc2eacbdb3d7');
-const biconomy = new Biconomy(infura_provider,{apiKey: 't_gkqtgTd.a93b199c-77be-46d3-bf5a-6b385b032552', debug: true});
-const biconomyWeb3 = new Web3(biconomy);
-////////////////////////////////////////////////////////////////////////////
 // Create contract interaction function to mint NFT token
 export const contractInteraction = async (metadataURI, amount) => {
   if (!isInitialised) {
     await init();
   }
-  return biconomy.onEvent(biconomy.READY, () => {
-    arcanarContract = new biconomyWeb3.eth.Contract(
-      NFT.abi,
-      NFT.networks[networkId].address
-    );
-    arcanarContract.methods
-    .createProduct(metadataURI, amount)
-    .send({ from: selectedAccount, signatureType: biconomy.EIP712_SIGN});
-  }).onEvent(biconomy.ERROR, (error, message) => {
-    // Handle error while initializing mexa
-  });
-  
-  
+  let provider = window.ethereum;
+  const biconomy = new Biconomy(provider,{apiKey: 't_gkqtgTd.a93b199c-77be-46d3-bf5a-6b385b032552', debug: true});
+  const biconomyWeb3 = new Web3(biconomy);
+  return biconomyWeb3.currentProvider.sendAsync(
+   {
+      jsonrpc: "2.0",
+      id: 999999999999,
+      method: "eth_signTypedData_v4",
+      params: [selectedAccount, dataToSign]
+   },
+   function(err, result) {
+       if (err) {
+           return console.error(err);
+       }
+       const signature = result.result.substring(2);
+       const r = "0x" + signature.substring(0, 64);
+       const s = "0x" + signature.substring(64, 128);
+       const v = parseInt(signature.substring(128, 130), 16);
+       },
+       
+       arcanarContract.methods
+             .createProduct(selectedAccount,metadataURI, r, s, v, amount)
+             .send({
+               from: selectedAccount
+             })
+   );
 };
 ////////////////////////////////////////////////////////////////
 
